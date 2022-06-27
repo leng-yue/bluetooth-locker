@@ -1,8 +1,10 @@
 [tool.poetry]
 name = "bluetooth-locker"
-version = "0.1.1"
+version = "0.1.2"
 description = "A bluetooth based locker"
 authors = ["leng-yue <lengyue@lengyue.me>"]
+readme = "README.md"
+repository = "https://github.com/leng-yue/bluetooth-locker"
 license = "MIT"
 packages = [
     { include = "bluetooth_locker" },
