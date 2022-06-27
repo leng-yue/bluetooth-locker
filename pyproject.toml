@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bluetooth-locker"
-version = "0.1.0"
+version = "0.1.1"
 description = "A bluetooth based locker"
 authors = ["leng-yue <lengyue@lengyue.me>"]
 license = "MIT"
@@ -9,15 +9,17 @@ packages = [
 ]
 
 [tool.poetry.scripts]
-bluetooth-locker = "bluetooth_locker:app"
+bluetooth-locker = "bluetooth_locker.app:main"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-loguru = "^0.6.0"
 
 [tool.poetry.dev-dependencies]
 black = "^22.3.0"
 isort = "^5.10.1"
+
+[tool.isort]
+profile = "black"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
