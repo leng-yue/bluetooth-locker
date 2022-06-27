@@ -4,7 +4,7 @@
         <img src="https://img.shields.io/pypi/v/bluetooth-locker" />
     </a>
     <a href="https://github.com/leng-yue/bluetooth-locker/actions/workflows/ci.yml" target="_blank">
-        <img src="https://img.shields.io/github/workflow/status/leng-yue/bluetooth-locker/CI" />
+        <img src="https://img.shields.io/github/workflow/status/leng-yue/bluetooth-locker/CI?label=check" />
     </a>
     <img src="https://img.shields.io/github/license/leng-yue/bluetooth-locker" />
     <a href="https://pepy.tech/project/bluetooth-locker" target="_blank">
