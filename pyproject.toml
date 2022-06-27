@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bluetooth-locker"
-version = "0.1.2"
+version = "0.1.3"
 description = "A bluetooth based locker"
 authors = ["leng-yue <lengyue@lengyue.me>"]
 readme = "README.md"
