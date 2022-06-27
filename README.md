@@ -26,8 +26,8 @@ bluetooth-locker -d xx:xx:xx:xx:xx:xx
 bluetooth-locker -d xx:xx:xx:xx:xx:xx -d xx:xx:xx:xx:xx:aa
 
 # Install service
-bluetooth-locker -d xx:xx:xx:xx:xx:xx --install
+sudo bluetooth-locker -d xx:xx:xx:xx:xx:xx --install
 
 # Uninstall service
-bluetooth-locker -d xx:xx:xx:xx:xx:xx --uninstall
+sudo bluetooth-locker -d xx:xx:xx:xx:xx:xx --uninstall
 ```
