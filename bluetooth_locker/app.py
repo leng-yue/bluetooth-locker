@@ -60,19 +60,23 @@ def lock_unlock_sessions(lock=True):
 
 def loop(config):
     addresses = [i.lower() for i in config.device]
-    previous_connected = True
+    previous_connected = None
 
     while True:
         logging.debug("Looping...")
         connected = False
 
+        start_time = time.time()
         for address in addresses:
             try:
-                output = sp.check_output(["bluetoothctl", "connect", address]).decode(
-                    "utf-8"
-                )
-            except sp.CalledProcessError as e:
-                output = e.output.decode("utf-8")
+                sp.check_output(
+                    ["bluetoothctl", "--timeout", "5", "scan", "on"]
+                ).decode("utf-8")
+                output = sp.check_output(
+                    ["bluetoothctl", "connect", address], timeout=5
+                ).decode("utf-8")
+            except (sp.CalledProcessError, sp.TimeoutExpired) as e:
+                output = (e.output or b"").decode("utf-8")
 
             if "Connection successful" in output or "already-connected" in output:
                 connected = True
@@ -81,13 +85,16 @@ def loop(config):
             else:
                 logging.debug(f"{address} is not connected")
 
-        logging.debug(f"Connected: {connected}")
+        logging.debug(
+            f"Connected: {connected}, took {time.time() - start_time} seconds"
+        )
 
         if connected != previous_connected:
-            previous_connected = connected
+            if previous_connected is not None:
+                logging.info(f"Connection status changed to {connected}")
+                lock_unlock_sessions(not connected)
 
-            logging.info(f"Connection status changed to {connected}")
-            lock_unlock_sessions(not connected)
+            previous_connected = connected
 
         time.sleep(5)
 
