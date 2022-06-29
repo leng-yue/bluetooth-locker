@@ -99,7 +99,8 @@ def install(config):
     service_path = Path(config.service_path)
 
     if service_path.exists():
-        logging.warning(f"{service_path} already exists, overwriting...")
+        logging.warning(f"{service_path} already exists, uninstalling...")
+        uninstall(config)
 
     devices = " ".join([f"-d {i.lower()}" for i in config.device])
     logging.info(f"Creating service file at {service_path}")
