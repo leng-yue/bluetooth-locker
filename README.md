@@ -16,7 +16,7 @@ A simple bluetooth based locker that lock and unlock your linux desktop automati
 
 ## How to use
 
-You need to have `libbluetooth`, `libbluetooth-dev` in your system. 
+You need to have `libbluetooth-dev` in your system. 
 
 ```shell
 # Simple run
