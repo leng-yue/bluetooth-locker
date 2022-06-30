@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bluetooth-locker"
-version = "0.1.5"
+version = "0.1.6"
 description = "A bluetooth based locker"
 authors = ["leng-yue <lengyue@lengyue.me>"]
 readme = "README.md"
@@ -26,5 +26,5 @@ isort = "^5.10.1"
 profile = "black"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["setuptools", "poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
