@@ -5,6 +5,8 @@ import subprocess as sp
 import time
 from pathlib import Path
 
+import bluetooth_locker.checker as checker
+
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     level=logging.INFO,
@@ -68,22 +70,31 @@ def loop(config):
 
         start_time = time.time()
         for address in addresses:
-            try:
-                sp.check_output(
-                    ["bluetoothctl", "--timeout", "5", "scan", "on"]
-                ).decode("utf-8")
-                output = sp.check_output(
-                    ["bluetoothctl", "connect", address], timeout=5
-                ).decode("utf-8")
-            except (sp.CalledProcessError, sp.TimeoutExpired) as e:
-                output = (e.output or b"").decode("utf-8")
-
-            if "Connection successful" in output or "already-connected" in output:
-                connected = True
+            r = checker.check(address)
+            logging.debug(f"Checking {address}: {r}")
+            if r == 0:
                 logging.debug(f"{address} is connected")
+                connected = True
                 break
-            else:
-                logging.debug(f"{address} is not connected")
+
+            logging.debug(f"{address} is not connected")
+
+            # try:
+            #     sp.check_output(
+            #         ["bluetoothctl", "--timeout", "5", "scan", "on"]
+            #     ).decode("utf-8")
+            #     output = sp.check_output(
+            #         ["bluetoothctl", "connect", address], timeout=5
+            #     ).decode("utf-8")
+            # except (sp.CalledProcessError, sp.TimeoutExpired) as e:
+            #     output = (e.output or b"").decode("utf-8")
+
+            # if "Connection successful" in output or "already-connected" in output:
+            #     connected = True
+            #     logging.debug(f"{address} is connected")
+            #     break
+            # else:
+            #     logging.debug(f"{address} is not connected")
 
         logging.debug(
             f"Connected: {connected}, took {time.time() - start_time} seconds"

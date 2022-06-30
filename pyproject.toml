@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bluetooth-locker"
-version = "0.1.4"
+version = "0.1.5"
 description = "A bluetooth based locker"
 authors = ["leng-yue <lengyue@lengyue.me>"]
 readme = "README.md"
@@ -9,6 +9,7 @@ license = "MIT"
 packages = [
     { include = "bluetooth_locker" },
 ]
+build = "build.py"
 
 [tool.poetry.scripts]
 bluetooth-locker = "bluetooth_locker.app:main"
@@ -17,6 +18,7 @@ bluetooth-locker = "bluetooth_locker.app:main"
 python = "^3.8"
 
 [tool.poetry.dev-dependencies]
+setuptools = "^62.6.0"
 black = "^22.3.0"
 isort = "^5.10.1"
 

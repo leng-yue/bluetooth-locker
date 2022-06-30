@@ -1,16 +1,16 @@
 #include <Arduino.h>
 #include <ArduinoBLE.h>
 
-REDIRECT_STDOUT_TO(Serial)
-
-const int ledPin = LED_BUILTIN;
 
 void setup()
 {
   Serial.begin(9600);
   
   // Initialize the LED
-  pinMode(ledPin, OUTPUT);
+  pinMode(LEDR, OUTPUT);
+  pinMode(LEDG, OUTPUT);
+  pinMode(LEDB, OUTPUT);
+
 
   // Initialize the Battery Level Service
   pinMode(P0_14, OUTPUT);
@@ -35,14 +35,16 @@ void loop()
 {
   BLE.central();
 
-  // if (BLE.connected())
-  // {
-  //   digitalWrite(ledPin, LOW);
-  // }
-  // else
-  // {
-  //   digitalWrite(ledPin, HIGH);
-  // }
+  if (BLE.connected())
+  {
+    digitalWrite(LEDG, LOW);
+    digitalWrite(LEDB, HIGH);
+  }
+  else
+  {
+    digitalWrite(LEDG, HIGH);
+    digitalWrite(LEDB, LOW);
+  }
 
   delay(1000);
 }

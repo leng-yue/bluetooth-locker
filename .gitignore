@@ -4,3 +4,6 @@
 __pycache__
 .DS_Store
 dist
+build
+*.so
+bluetooth_locker.egg-info
