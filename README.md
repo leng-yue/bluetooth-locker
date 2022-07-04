@@ -14,6 +14,8 @@
 
 A simple bluetooth based locker that lock and unlock your linux desktop automatically.
 
+**Lock your PC using HomeKit is a better solution, please check [HomeKit PC Lock](https://github.com/leng-yue/homekit-pc-lock).**
+
 ## How to use
 
 You need to have `libbluetooth-dev` in your system. 
